@@ -1,0 +1,8 @@
+.vscode
+node_modules
+package-lock.json
+practice/test01.json
+public
+tmp
+tmp_uploads
+practice

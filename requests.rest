@@ -1,0 +1,16 @@
+
+
+POST http://localhost:3000/try-post
+Content-Type: application/x-www-form-urlencoded
+
+email=xxx%40gmail.com&password=567890&cb=hello
+
+###
+
+GET http://localhost:3000/
+
+###
+POST http://localhost:3000/try-post
+Content-Type: application/json
+
+{"name":"david"}
