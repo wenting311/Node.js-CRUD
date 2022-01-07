@@ -51,7 +51,7 @@
                   <% for(let i of rows){ %>
                   <tr>
                     <td>
-                      <a href="javascript: del_it(<%= i.sid %>)">
+                      <a href="javascript: del_it(<%= i.empno %>)">
                         <i class="fas fa-trash-alt"></i>
                       </a>
                     </td>
@@ -62,7 +62,7 @@
                     <td><%= i.deptno %></td>
                     <td><%= i.title %></td>
                     <td>
-                      <a href="/employee/edit/<%= i.sid %>">
+                      <a href="/employee/edit/<%= i.empno %>">
                         <i class="fas fa-edit"></i>
                       </a>
                     </td>

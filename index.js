@@ -4,7 +4,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
 // const upload = multer({dest: 'tmp_uploads/'});
-const upload = require('./modules/upload-module');
+const upload = require('./modules/upload-modules');
 const session = require('express-session');
 const MysqlStore = require('express-mysql-session')(session);
 
@@ -26,7 +26,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     secret: 'sdfgdsf456456456YIOIUOIUOf',
-    // store: sessionStore,
+    store: sessionStore,
     cookie: {
         maxAge: 1800000
     }
@@ -218,11 +218,11 @@ app.get('/try-db', (req, res)=>{
 });
 */
 app.get('/try-db', async (req, res)=>{
-    const [rs] = await db.query(`SELECT * FROM address_book LIMIT 3`);
+    const [rs] = await db.query(`SELECT * FROM employee LIMIT 3`);
     res.json(rs);
 });
 
-app.use('/address-book', require('./routes/address-book'));
+app.use('/employee', require('./routes/employee'));
 app.use('/cate', require('./routes/cate'));
 app.use('/product-list', require('./routes/product-list'));
 app.use('/cart', require('./routes/cart'));

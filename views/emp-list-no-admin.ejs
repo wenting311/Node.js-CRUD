@@ -37,36 +37,21 @@
             <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col"><i class="fas fa-trash-alt"></i></th>
                     <th scope="col">員工編號</th>
                     <th scope="col">姓名</th>
                     <th scope="col">入職日</th>
-                    <th scope="col">薪水</th>
                     <th scope="col">部門</th>
                     <th scope="col">職稱</th>
-                    <th scope="col"><i class="fas fa-edit"></i></th>
                   </tr>
                 </thead>
                 <tbody>
                   <% for(let i of rows){ %>
                   <tr>
-                    <td>
-                      <a href="javascript: del_it(<%= i.sid %>)">
-                        <i class="fas fa-trash-alt"></i>
-                      </a>
-                    </td>
                     <td><%= i.empno %></td>
                     <td><%= i.ename %></td>
                     <td><%= toDateString(i.hiredate) %></td>
-                    <td><%= i.salary %></td>
                     <td><%= i.deptno %></td>
                     <td><%= i.title %></td>
-                    <td>
-                      <a href="/employee/edit/<%= i.sid %>">
-                        <i class="fas fa-edit"></i>
-                      </a>
-                    </td>
-
                   </tr>
                   <% } %>
                 </tbody>
@@ -79,14 +64,4 @@
 </div>
 
 <%- include('parts/scripts') %>
-<script>
-  function del_it(empno) {
-    if(confirm(`確定要刪除編號為 ${empno} 的資料嗎?`)){
-      location.href = '/employee/del/' + empno;
-    }
-  }
-
-</script>
-
-
 <%- include('parts/html-foot') %>
