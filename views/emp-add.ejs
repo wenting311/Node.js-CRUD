@@ -13,31 +13,31 @@
 
                   <form name="form1" onsubmit="sendData(); return false;">
                     <div class="mb-3">
-                      <label for="ename" class="form-label">name **</label>
+                      <label for="ename" class="form-label">姓名 **</label>
                       <input type="text" class="form-control" id="ename" name="ename">
                       <div class="form-text"></div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="hiredate" class="form-label ">hiredate **</label>
+                        <label for="hiredate" class="form-label ">入職日 **</label>
                         <input type="date" class="form-control" id="hiredate" name="hiredate" value="<%= toDateString(Date())  %>">
                         <div class="form-text"></div>
                     </div>
 
                       <div class="mb-3">
-                        <label for="salary" class="form-label">salary **</label>
+                        <label for="salary" class="form-label">薪資 **</label>
                         <input type="text" class="form-control" id="salary" name="salary">
                         <div class="form-text"></div>
                       </div>
 
                       <div class="mb-3">
-                        <label for="deptno" class="form-label">deptno</label>
+                        <label for="deptno" class="form-label">部門代號</label>
                         <input type="text" class="form-control" id="deptno" name="deptno">
                         <div class="form-text"></div>
                       </div>
 
                       <div class="mb-3">
-                        <label for="title" class="form-label">title</label>
+                        <label for="title" class="form-label">職稱</label>
                         <input class="form-control" name="title" id="title"></input>
                         <div class="form-text"></div>
                       </div>
@@ -77,14 +77,14 @@ function sendData(){
     // TODO: 欄位資料的檢查
     let isPass = true;
 
-    // if(ename.val().length < 2){
-    //     isPass = false;
-    //     //alert('請輸入正確的姓名');
-    //     ename.next().html('請輸入正確的姓名');
-    //     ename.css({
-    //         border: '1px solid red'
-    //     });
-    // }
+    if(ename.val().length < 2){
+        isPass = false;
+        //alert('請輸入正確的姓名');
+        ename.next().html('請輸入正確的姓名');
+        ename.css({
+            border: '1px solid red'
+        });
+    }
 
     // if(hiredate>Now()){
     //     isPass = false;
@@ -94,13 +94,13 @@ function sendData(){
     //     });
     // }
 
-    // if(salary.val() < 25250){
-    //     isPass = false;
-    //     salary.next().html('請遵守勞基法給薪');
-    //     salary.css({
-    //         border: '1px solid red'
-    //     });
-    // }
+    if(salary.val() < 25250){
+        isPass = false;
+        salary.next().html('請遵守勞基法給薪');
+        salary.css({
+            border: '1px solid red'
+        });
+    }
 
 
     if(isPass) {
