@@ -40,7 +40,7 @@ router.post('/add', async (req, res)=>{
 
     // TODO: 欄位資料的檢查
 
-    const sql = "INSERT INTO `emp`(`empno`, `ename`,`mobile`,`email`, `hiredate`, `salary`, `deptno`, `title`) VALUES (?,?,?,?,?,?,?,?)";
+    const sql = "INSERT INTO `emp`(`empno`, `ename`,`mobile`,`email`, `hiredate`, `salary`, `deptno`, `level`) VALUES (?,?,?,?,?,?,?,?)";
     const [results] = await db.query(sql, [
         req.body.empno,        
         req.body.ename, 
@@ -49,7 +49,7 @@ router.post('/add', async (req, res)=>{
         req.body.hiredate,
         req.body.salary,
         req.body.deptno,
-        req.body.title,
+        req.body.level,
     ]);
 
     output.results = results;
