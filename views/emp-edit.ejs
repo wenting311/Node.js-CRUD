@@ -17,6 +17,17 @@
                       <input type="text" class="form-control" id="ename" name="ename" value="<%= ename %>">
                       <div class="form-text"></div>
                     </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">電郵 **</label>
+                      <input type="text" class="form-control" id="email" name="email">
+                      <div class="form-text"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="hiredate" class="form-label ">入職日 **</label>
+                        <input type="date" class="form-control" id="hiredate" name="hiredate" value="<%= toDateString(Date())  %>">
+                        <div class="form-text"></div>
+                    </div>
 
                     <div class="mb-3">
                         <label for="hiredate" class="form-label">入職日 **</label>
@@ -31,8 +42,8 @@
                       </div>
 
                       <div class="mb-3">
-                        <label for="deptno" class="form-label">部門代號</label>
-                        <input type="text" class="form-control" id="deptno" name="deptno" value="<%= deptno %>">
+                        <label for="dname" class="form-label">部門</label>
+                        <input type="text" class="form-control" id="dname" name="dname" value="<%= deptno %>">
                       </div>
 
                       <div class="mb-3">

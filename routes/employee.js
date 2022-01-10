@@ -23,6 +23,10 @@ router.use((req, res, next)=>{
 });
 
 
+
+
+
+
 router.get('/add', async (req, res)=>{
     res.render('emp-add');
 });
@@ -36,10 +40,12 @@ router.post('/add', async (req, res)=>{
 
     // TODO: 欄位資料的檢查
 
-    const sql = "INSERT INTO `emp`(`empno`, `ename`, `hiredate`, `salary`, `deptno`, `title`) VALUES (?,?,?,?,?,?)";
+    const sql = "INSERT INTO `emp`(`empno`, `ename`,`mobile`,`email`, `hiredate`, `salary`, `deptno`, `title`) VALUES (?,?,?,?,?,?,?,?)";
     const [results] = await db.query(sql, [
-        req.body.empno,
-        req.body.ename,
+        req.body.empno,        
+        req.body.ename, 
+        req.body.mobile, 
+        req.body.email,        
         req.body.hiredate,
         req.body.salary,
         req.body.deptno,
@@ -156,7 +162,7 @@ router.get('/', async (req, res)=>{
         }
 
 
-        const sql = `SELECT * FROM emp ORDER BY empno DESC LIMIT ${(page-1)*perPage}, ${perPage}`;
+        const sql = `SELECT empno,ename,mobile,email,hiredate, salary, dname,title FROM emp JOIN dept ON emp.deptno = dept.deptno JOIN lv ON emp.level=lv.level ORDER BY empno DESC LIMIT ${(page-1)*perPage}, ${perPage} ;`;
 
         [rows] = await db.query(sql);
     }

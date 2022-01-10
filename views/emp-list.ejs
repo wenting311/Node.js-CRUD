@@ -40,6 +40,8 @@
                     <th scope="col"><i class="fas fa-trash-alt"></i></th>
                     <th scope="col">員工編號</th>
                     <th scope="col">姓名</th>
+                    <th scope="col">電話</th>
+                    <th scope="col">電郵</th>
                     <th scope="col">入職日</th>
                     <th scope="col">薪水</th>
                     <th scope="col">部門</th>
@@ -57,9 +59,11 @@
                     </td>
                     <td><%= i.empno %></td>
                     <td><%= i.ename %></td>
+                    <td><%= i.mobile %></td>
+                    <td><%= i.email %></td>
                     <td><%= toDateString(i.hiredate) %></td>
                     <td><%= i.salary %></td>
-                    <td><%= i.deptno %></td>
+                    <td><%= i.dname %></td>
                     <td><%= i.title %></td>
                     <td>
                       <a href="/employee/edit/<%= i.empno %>">
