@@ -17,7 +17,37 @@
                       <input type="text" class="form-control" id="ename" name="ename">
                       <div class="form-text"></div>
                     </div>
-
+                    <div class="mb-3">
+                      <label for="deptno" class="form-label">部門 **</label>                      
+                      <select class="form-select" id="deptno" name="deptno">                          
+                        <option value="1">管理部</option>
+                        <option value="2">會計部</option>
+                        <option value="3">業務部</option>
+                        <option value="4" selected>製造部</option>
+                        <option value="5">研發部</option>
+                        <option value="6">工程部</option>
+                      </select>
+                      
+                    </div>
+                                          
+                    <div class="mb-3">
+                      <label for="level" class="form-label">職稱**</label>
+                        <select class="form-select" id="level" name="level">                          
+                        <option value="C1">會計師</option>
+                        <option value="C2">會計部經理</option>
+                        <option value="M1" selected>技術員</option>
+                        <option value="M2">領班</option>
+                        <option value="M3">製造部經理</option>
+                        <option value="N1">管理師</option>
+                        <option value="N2">管理部經理</option>
+                        <option value="E1">製程設備工程師</option>
+                        <option value="E2">工程部經理</option>                          
+                        <option value="R1">研發工程師</option>
+                        <option value="R2">研發部經理</option>
+                        <option value="S1">業務代表</option>
+                        <option value="S2">業務經理</option>
+                      </select>
+                      </div>
                     <div class="mb-3">
                       <label for="mobile" class="form-label">電話 **</label>
                       <input type="text" class="form-control" id="mobile" name="mobile">
@@ -34,45 +64,7 @@
                         <label for="hiredate" class="form-label ">入職日 **</label>
                         <input type="date" class="form-control" id="hiredate" name="hiredate" value="<%= toDateString() %>">
                         <div class="form-text"></div>
-                    </div>
-
-                      <div class="mb-3">
-                        <label for="salary" class="form-label">薪資 **</label>
-                        <input type="text" class="form-control" id="salary" name="salary">
-                        <div class="form-text"></div>
-                      </div>
-
-                      <div class="mb-3">
-                        <label for="deptno" class="form-label">部門 **</label>                      
-                        <select class="form-select" id="deptno" name="deptno">                          
-                          <option value="1">管理部</option>
-                          <option value="2">會計部</option>
-                          <option value="3">業務部</option>
-                          <option value="4">製造部</option>
-                          <option value="5">研發部</option>
-                          <option value="6">工程部</option>
-                        </select>
-                        
-                      </div>
-                                            
-                      <div class="mb-3">
-                        <label for="level" class="form-label">職稱**</label>
-                          <select class="form-select" id="level" name="level">                          
-                          <option value="C1">會計師</option>
-                          <option value="C2">會計部經理</option>
-                          <option value="M1">技術員</option>
-                          <option value="M2">領班</option>
-                          <option value="M3">製造部經理</option>
-                          <option value="N1">管理師</option>
-                          <option value="N2">管理部經理</option>
-                          <option value="E1">製程設備工程師</option>
-                          <option value="E2">工程部經理</option>                          
-                          <option value="R1">研發工程師</option>
-                          <option value="R2">研發部經理</option>
-                          <option value="S1">業務代表</option>
-                          <option value="S2">業務經理</option>
-                        </select>
-                        </div>
+                    </div>                   
                         
                       
                   <div class="mb-3">
@@ -143,13 +135,13 @@ function sendData(){
         });
     }
 
-    if(salary.val() < 25250){
-        isPass = false;
-        salary.next().html('勞基法最低薪資25250');
-        salary.css({
-            border: '1px solid red'
-        });
-    }
+    // if(salary.val() < 25250){
+    //     isPass = false;
+    //     salary.next().html('勞基法最低薪資25250');
+    //     salary.css({
+    //         border: '1px solid red'
+    //     });
+    // }
 
 
     if(isPass) {

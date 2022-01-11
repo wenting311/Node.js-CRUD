@@ -1,108 +1,117 @@
-<%- include('parts/html-head') %>
-<%- include('parts/navbar') %>
+<%- include('parts/html-head') %> <%- include('parts/navbar') %>
 
 <div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">編輯資料</h5>
 
+          <form name="form1" onsubmit="sendData(); return false;">
+            <div class="mb-3">
+              <label for="ename" class="form-label">姓名 **</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ename"
+                name="ename"
+                value="<%= ename %>"
+              />
+              <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="deptno" class="form-label">部門 **</label>                      
+              <select class="form-select" id="deptno" name="deptno"> 
+                <option value="<%= deptno %>" selected><%= dname %></option>                         
+                <option value="1">管理部</option>
+                <option value="2">會計部</option>
+                <option value="3">業務部</option>
+                <option value="4">製造部</option>
+                <option value="5">研發部</option>
+                <option value="6">工程部</option>
+              </select>
+              
+            </div>
 
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-    
-                <div class="card-body">
-                  <h5 class="card-title">編輯資料</h5>
+            <div class="mb-3">
+              <label for="level" class="form-label">職稱</label>
+              <select
+                class="form-select"
+                id="level"
+                name="level"
+                value="<%= level %>"
+              >
+                <option value="<%= level %>" selected><%= title %></option>
+                <option value="C1">會計師</option>
+                <option value="C2">會計部經理</option>
+                <option value="M1">技術員</option>
+                <option value="M2">領班</option>
+                <option value="M3">製造部經理</option>
+                <option value="N1">管理師</option>
+                <option value="N2">管理部經理</option>
+                <option value="E1">製程設備工程師</option>
+                <option value="E2">工程部經理</option>
+                <option value="R1">研發工程師</option>
+                <option value="R2">研發部經理</option>
+                <option value="S1">業務代表</option>
+                <option value="S2">業務經理</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">電郵 **</label>
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                name="email"
+                value="<%= email %>"
+              />
+              <div class="form-text"></div>
+            </div>
 
-                  <form name="form1" onsubmit="sendData(); return false;">
-                    <div class="mb-3">
-                      <label for="ename" class="form-label">姓名 **</label>
-                      <input type="text" class="form-control" id="ename" name="ename" value="<%= ename %>">
-                      <div class="form-text"></div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="email" class="form-label">電郵 **</label>
-                      <input type="text" class="form-control" id="email" name="email"value="<%= email %>">
-                      <div class="form-text"></div>
-                    </div>
+            <div class="mb-3">
+              <label for="hiredate" class="form-label">入職日 **</label>
+              <input
+                type="date"
+                class="form-control"
+                id="hiredate"
+                name="hiredate"
+                value="<%= toDateString(hiredate) %>"
+              />
+              <div class="form-text"></div>
+            </div>
+                     
 
-                    <div class="mb-3">
-                        <label for="hiredate" class="form-label ">入職日 **</label>
-                        <input type="date" class="form-control" id="hiredate" name="hiredate" value="<%= toDateString(hiredate) %>">
-                        <div class="form-text"></div>
-                    </div>
-
-                        <div class="mb-3">
-                        <label for="salary" class="form-label">薪資 **</label>
-                        <input type="text" class="form-control" id="salary" name="salary" value="<%= salary %>">
-                        <div class="form-text"></div>
-                      </div>
-
-                      <div class="mb-3">
-                        <label for="dname" class="form-label">部門</label>
-                        <select class="form-select" id="deptno" name="deptno" value="<%= deptno %>">                          
-                          <option value="1">管理部</option>
-                          <option value="2">會計部</option>
-                          <option value="3">業務部</option>
-                          <option value="4">製造部</option>
-                          <option value="5">研發部</option>
-                          <option value="6">工程部</option>
-                        </select>
-                      </div>
-
-                      <div class="mb-3">
-                        <label for="level" class="form-label">職稱</label>
-                        <select class="form-select" id="level" name="level" value="<%= level %>">                          
-                          <option value="C1">會計師</option>
-                          <option value="C2">會計部經理</option>
-                          <option value="M1">技術員</option>
-                          <option value="M2">領班</option>
-                          <option value="M3">製造部經理</option>
-                          <option value="N1">管理師</option>
-                          <option value="N2">管理部經理</option>
-                          <option value="E1">製程設備工程師</option>
-                          <option value="E2">工程部經理</option>                          
-                          <option value="R1">研發工程師</option>
-                          <option value="R2">研發部經理</option>
-                          <option value="S1">業務代表</option>
-                          <option value="S2">業務經理</option>
-                        </select>
-                      </div>
-
-                    <button type="submit" class="btn btn-primary">修改</button>
-                  </form>
-
-
-
-                </div>
-              </div>
-
-
+            <button type="submit" class="btn btn-primary">修改</button>
+          </form>
         </div>
+      </div>
     </div>
-
-
-
+  </div>
 </div>
 
 <%- include('parts/scripts') %>
 <script>
-const ename = $('#ename');
-const mobile = $('#mobile');
-const email = $('#email');
-const hiredate = $('#hiredate');
-const salary = $('#salary');
-const deptno = $('#deptno');
-const level = $('#level');
-const email_re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-const mobile_re = /^09\d{2}-?\d{3}-?\d{3}$/;
+  const ename = $("#ename");
+  const mobile = $("#mobile");
+  const email = $("#email");
+  const hiredate = $("#hiredate");
+  const salary = $("#salary");
+  const deptno = $("#deptno");
+  const level = $("#level");
+  const email_re =
+    /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+  const mobile_re = /^09\d{2}-?\d{3}-?\d{3}$/;
 
-function sendData(){
-  ename.next().html('');
-  ename.css({ border: '1px solid #CCCCCC' });
-  mobile.next().html('');
-  mobile.css({ border: '1px solid #CCCCCC' });
-  email.next().html('');
-  email.css({ border: '1px solid #CCCCCC' });
-  salary.next().html('');
-  salary.css({ border: '1px solid #CCCCCC' });
+  function sendData() {
+    ename.next().html("");
+    ename.css({ border: "1px solid #CCCCCC" });
+    mobile.next().html("");
+    mobile.css({ border: "1px solid #CCCCCC" });
+    email.next().html("");
+    email.css({ border: "1px solid #CCCCCC" });
+    salary.next().html("");
+    salary.css({ border: "1px solid #CCCCCC" });
 
     // TODO: 欄位資料的檢查
     let isPass = true;
@@ -140,24 +149,23 @@ function sendData(){
     //     });
     // }
 
+    if (isPass) {
+      $.post(
+        "",
+        $(document.form1).serialize(),
+        function (data) {
+          console.log(data);
 
-    if(isPass) {
-        $.post('', $(document.form1).serialize(), function(data){
-            console.log(data);
-
-            if(data.success){
-              alert('資料修改成功');
-              location.href = '<%- referer %>' || '/employee'; // 轉向
-              
-            } else {
-              alert(data.error || '資料沒有修改');
-            }
-        }, 'json');
-
+          if (data.success) {
+            alert("資料修改成功");
+            location.href = "<%- referer %>" || "/employee"; // 轉向
+          } else {
+            alert(data.error || "資料沒有修改");
+          }
+        },
+        "json"
+      );
     }
-
-}
-
-
+  }
 </script>
 <%- include('parts/html-foot') %>

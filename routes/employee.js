@@ -40,14 +40,13 @@ router.post('/add', async (req, res)=>{
 
     // TODO: 欄位資料的檢查
 
-    const sql = "INSERT INTO `emp`(`empno`, `ename`,`mobile`,`email`, `hiredate`, `salary`, `deptno`, `level`) VALUES (?,?,?,?,?,?,?,?)";
+    const sql = "INSERT INTO `emp`(`empno`, `ename`,`mobile`,`email`, `hiredate`, `deptno`, `level`) VALUES (?,?,?,?,?,?,?)";
     const [results] = await db.query(sql, [
         req.body.empno,        
         req.body.ename, 
         req.body.mobile, 
         req.body.email,        
         req.body.hiredate,
-        req.body.salary,
         req.body.deptno,
         req.body.level,
     ]);
@@ -85,7 +84,7 @@ router.get('/edit/:empno', async (req, res)=>{
     if(!empno){
         return res.redirect(req.baseUrl);  // 轉向
     }
-    const sql = "SELECT * FROM emp WHERE empno=?";
+    const sql = "SELECT empno,ename,mobile,email,hiredate, lv.salary,emp.deptno, dept.dname,emp.level,lv.title FROM emp JOIN dept ON emp.deptno = dept.deptno JOIN lv ON emp.level=lv.level WHERE empno=?";
     const [rs] = await db.query(sql, [empno]);
     if(! rs.length){
         return res.redirect(req.baseUrl);  // 轉向
@@ -109,7 +108,7 @@ router.post('/edit/:empno', async (req, res)=>{
         output.code = 410;
         return res.json(output);
     }
-    const sql = "SELECT * FROM emp WHERE empno=?";
+    const sql = "SELECT empno,ename,mobile,email,hiredate, lv.salary,emp.deptno, dept.dname,emp.level,lv.title FROM emp JOIN dept ON emp.deptno = dept.deptno JOIN lv ON emp.level=lv.level WHERE empno=?";
     const [rs] = await db.query(sql, [empno]);
     if(! rs.length){
         output.error = '編號錯誤';
@@ -162,9 +161,10 @@ router.get('/', async (req, res)=>{
         }
 
 
-        const sql = `SELECT empno,ename,mobile,email,hiredate, salary, dname,title FROM emp JOIN dept ON emp.deptno = dept.deptno JOIN lv ON emp.level=lv.level ORDER BY empno DESC LIMIT ${(page-1)*perPage}, ${perPage} ;`;
+        const sql = `SELECT empno,ename,mobile,email,hiredate, lv.salary,emp.deptno, dept.dname,emp.level,lv.title FROM emp JOIN dept ON emp.deptno = dept.deptno JOIN lv ON emp.level=lv.level ORDER BY empno DESC LIMIT ${(page-1)*perPage}, ${perPage} ;`;
 
         [rows] = await db.query(sql);
+        
     }
 
     const output = {
@@ -177,10 +177,14 @@ router.get('/', async (req, res)=>{
     // return res.json(output); // 測試
     if(req.session.admin){
         res.render('emp-list', output);
+      
+
     } else {
         res.render('emp-list-no-admin', output);
     }
     
 });
+
+
 
 module.exports = router;

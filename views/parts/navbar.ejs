@@ -17,17 +17,18 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link <%= pageName==='home' ? 'active' : '' %> " href="/">Home</a>
+                <a class="nav-link <%= pageName==='home' ? 'active' : '' %> " href="/">人事系統</a>
               </li>
               
               <li class="nav-item">
                 <a class="nav-link <%= pageName==='emp-list' ? 'active' : '' %>" href="/employee">員工資料表</a>
               </li>
-
+             
+             
               <li class="nav-item">
-                <a class="nav-link <%= pageName==='ab-add' ? 'active' : '' %>" href="/employee/add">新增</a>
+                <a class="nav-link <%= pageName==='emp-add' ? 'active' : '' %>" href="/employee/add">新增</a>
               </li>
-
+              
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
               <% if(admin){ %>
