@@ -135,18 +135,13 @@ function sendData(){
         });
     }
 
-    // if(salary.val() < 25250){
-    //     isPass = false;
-    //     salary.next().html('勞基法最低薪資25250');
-    //     salary.css({
-    //         border: '1px solid red'
-    //     });
-    // }
 
 
+    
     if(isPass) {
         $.post('', $(document.form1).serialize(), function(data){
-            console.log(data);
+            
+          console.log(data);
             if(data.success){
               alert('資料新增成功');
               location.href = '/employee'; // 轉向到列表頁
@@ -158,7 +153,6 @@ function sendData(){
     }
 
 }
-
 
 </script>
 <%- include('parts/html-foot') %>
