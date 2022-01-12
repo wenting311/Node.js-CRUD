@@ -23,15 +23,22 @@
               <li class="nav-item">
                 <a class="nav-link <%= pageName==='emp-list' ? 'active' : '' %>" href="/employee">員工資料表</a>
               </li>
-             
-             
               <li class="nav-item">
-                <a class="nav-link <%= pageName==='emp-add' ? 'active' : '' %>" href="/employee/add">新增</a>
+                <a class="nav-link <%= pageName==='x' ? 'active' : '' %>" href="/">薪資管理</a>
               </li>
               
+             
+              <li class="nav-item">
+                
+                <a class="nav-link <%= pageName==='emp-add' ? 'active' : '' %>" href="/employee/add">>新增</a>
+                
+              </li>
+             
             </ul>
+            
             <ul class="navbar-nav mb-2 mb-lg-0">
               <% if(admin){ %>
+                
                 <li class="nav-item">
                   <a class="nav-link"><%= admin %></a>
                 </li>

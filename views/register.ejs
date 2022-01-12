@@ -1,0 +1,73 @@
+<%- include('parts/html-head') %>
+<%- include('parts/navbar') %>
+
+<div class="container">
+
+    <div class="rol">
+        <div class="col-lg-6">
+            <form name="form1" onsubmit="sendData(); return false;">
+                <div class="mb-3">
+                    <label for="account" class="form-label">帳號</label>
+                    <input type="text" class="form-control" id="account" name="account">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">密碼</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
+
+                <button type="submit" class="btn btn-primary" disabled>註冊</button>
+            </form>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<%- include('parts/scripts') %>
+<script>
+const ename = $('#ename');
+const mobile = $('#mobile');
+
+
+function sendData(){
+  ename.next().html('');
+  ename.css({ border: '1px solid #CCCCCC' });
+  mobile.next().html('');
+  mobile.css({ border: '1px solid #CCCCCC' });
+  
+
+    // TODO: 欄位資料的檢查
+    let isPass = true;
+
+    if(ename.val().length < 2){
+        isPass = false;
+        //alert('請輸入正確的姓名');
+        ename.next().html('請輸入正確的姓名');
+        ename.css({
+            border: '1px solid red'
+        });
+    }
+
+    
+
+
+    if(isPass) {
+        $.post('', $(document.form1).serialize(), function(data){
+            console.log(data);
+            if(data.success){
+              alert('註冊成功');
+              location.href = '/'; // 轉向到列表頁
+            } else {
+              alert(data.error || '註冊失敗');
+            }
+        }, 'json');
+
+    }
+
+}
+    
+
+</script>
+<%- include('parts/html-foot') %>

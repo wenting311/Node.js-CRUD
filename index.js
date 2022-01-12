@@ -151,6 +151,11 @@ app.post('/login', async (req, res)=>{
     res.json(output);
 });
 
+app.get('/register', (req, res)=>{
+
+    res.render('register');
+});
+
 app.get('/logout', async (req, res)=>{
     delete req.session.admin;
     // await req.session.destroy();
