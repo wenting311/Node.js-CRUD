@@ -135,13 +135,13 @@ function sendData(){
         });
     }
 
-    // if(hiredate >= Date()){
-    //     isPass = false;
-    //     hiredate.next().html('請輸入正確的時間');
-    //     hiredate.css({
-    //         border: '1px solid red'
-    //     });
-    // }
+    if(hiredate >= Date()){
+        isPass = false;
+        hiredate.next().html('請輸入正確的時間');
+        hiredate.css({
+            border: '1px solid red'
+        });
+    }
 
     
     if(isPass) {
